@@ -102,9 +102,16 @@ public class FlagQuizLogic : MonoBehaviour
         string flagPath = $"Flags/{randomCountry.code}";
         Sprite flagSprite = Resources.Load<Sprite>(flagPath);
         float ratio = (float)flagSprite.texture.width / (float)flagSprite.texture.height;
-        float dispHeight = 160;
-        float dispWidth = dispHeight * ratio;
-        flagImage.GetComponent<RectTransform>().sizeDelta = new Vector2(dispWidth, dispHeight);
+        float dispWidth = 216 - 32;
+        float imW = dispWidth;
+        float imH = imW / ratio;
+        if (imH > 150)
+        {
+            imH = 150;
+            imW = imH / ratio;
+        }
+
+        flagImage.GetComponent<RectTransform>().sizeDelta = new Vector2(imW, imH);
         if (flagSprite == null)
         {
             Debug.LogError($"Failed to load flag image from path: {flagPath}");
