@@ -750,6 +750,7 @@ GameObject:
   m_Component:
   - component: {fileID: 608653328}
   - component: {fileID: 608653327}
+  - component: {fileID: 608653329}
   m_Layer: 0
   m_Name: Ads
   m_TagString: Untagged
@@ -784,6 +785,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &608653329
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 608653326}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9837b35751f4454f851fe9bed36b0d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &812222667
 GameObject:
   m_ObjectHideFlags: 0
@@ -813,6 +826,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dabf970bbbeb2164b8f9fae81a4f5b9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ads: {fileID: 608653326}
   flagImage: {fileID: 408619818}
   scoreText: {fileID: 468555437}
   button1: {fileID: 408063403}
