@@ -2,7 +2,7 @@ import json, os, sys
 
 input = json.loads(open("./Assets/Resources/country_codes.json").read())
 
-output = dict(countries=[])
+output: dict[str, list[dict[str, str]]] = dict(countries=[])
 
 for i in input:
     output["countries"].append(dict(code=i, name=input[i]))
