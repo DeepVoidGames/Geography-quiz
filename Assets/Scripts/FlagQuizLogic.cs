@@ -51,7 +51,7 @@ public class FlagQuizLogic : MonoBehaviour
 
             Debug.Log($"JSON file loaded from path: {jsonPath}");
             Debug.Log($"Length of JSON string: {jsonString.Length}");
-            Debug.Log($"Leength of CountryList: {countryList.countries.Count}");
+            Debug.Log($"Length of CountryList: {countryList.countries.Count}");
         }
         else
         {
