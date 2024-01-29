@@ -1,31 +1,63 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
+
+[System.Serializable]
+public class Country
+{
+    public string code;
+    public string name;
+}
+
+[System.Serializable]
+public class CountryList
+{
+    public List<Country> countries;
+}
 
 public class FlagQuizLogic : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public Button button1;
+    public Button button2;
+    public Button button3;
+    public Button button4;
+
+
     void Start()
     {
-        string jsonPath = "country_codes"; 
+        string jsonPath = "Assets/Resources/country_codes.json";
 
-        TextAsset jsonTextAsset = Resources.Load<TextAsset>(jsonPath);
-
-        if (jsonTextAsset != null)
+        if (System.IO.File.Exists(jsonPath))
         {
-            string jsonString = jsonTextAsset.text;
-            // Now you can parse jsonString using JSON utility classes or libraries
-            // For example, you can use JsonUtility.FromJson<MyDataClass>(jsonString);
+            string jsonString = System.IO.File.ReadAllText(jsonPath);
+
+            // Deserialize JSON string into CountryList object
+            CountryList countryList = JsonUtility.FromJson<CountryList>(jsonString);
+
+            if (countryList != null && countryList.countries != null)
+            {
+                // Now you can access the list of countries
+                foreach (Country country in countryList.countries)
+                {
+                    Debug.Log($"Country Code: {country.code}, Name: {country.name}");
+                }
+            }
+            else
+            {
+                Debug.LogError("Failed to deserialize JSON into CountryList");
+            }
+
+            Debug.Log($"JSON file loaded from path: {jsonPath}");
+            Debug.Log($"Length of JSON string: {jsonString.Length}");
+            Debug.Log($"Leength of CountryList: {countryList.countries.Count}");
         }
         else
         {
-            Debug.LogError("Failed to load JSON file: " + jsonPath);
+            Debug.LogError("JSON file not found at path: " + jsonPath);
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
 }
