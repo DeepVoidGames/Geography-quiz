@@ -1,3 +1,4 @@
+using GoogleMobileAds.Api;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -18,6 +19,9 @@ public class CountryList
 
 public class FlagQuizLogic : MonoBehaviour
 {
+    [Header("Ads")]
+    public GameObject ads;
+
     [Header("UI Elements")]
     public Image flagImage;
     public Text scoreText;
@@ -134,6 +138,9 @@ public class FlagQuizLogic : MonoBehaviour
             Debug.Log("Incorrect!");
             ResetScore();
             StartGame();
+
+            IntersitialAd ad = ads.GetComponent<IntersitialAd>();
+            ad.Show();
         }
     }
 
