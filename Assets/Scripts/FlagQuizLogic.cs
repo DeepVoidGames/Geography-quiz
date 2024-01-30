@@ -92,6 +92,11 @@ public class FlagQuizLogic : MonoBehaviour
             otherCountries[randomIndex2] = temp;
         }
 
+        button1.onClick.RemoveAllListeners();
+        button2.onClick.RemoveAllListeners();
+        button3.onClick.RemoveAllListeners();
+        button4.onClick.RemoveAllListeners();
+
         button1.onClick.AddListener(() => CheckAnswer(otherCountries[0].code, randomCountry.code));
         button2.onClick.AddListener(() => CheckAnswer(otherCountries[1].code, randomCountry.code));
         button3.onClick.AddListener(() => CheckAnswer(otherCountries[2].code, randomCountry.code));
