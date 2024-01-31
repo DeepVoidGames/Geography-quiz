@@ -29,14 +29,25 @@ public class FlagQuizLogic : MonoBehaviour
     public Button button2;
     public Button button3;
     public Button button4;
+    [Header("Lose Panel UI")]
+    public GameObject losePanel;
+    public Text bestScoreText;
+    public Text loseScoreText;
 
-    [Header("Debug")]
+    [Header("Stats")]
     public int score = 0;
+    public int highScore = 0;
     private CountryList countryList;
+    
+    void Awake(){
+        losePanel.SetActive(false);
+    }
 
     void Start()
     {
         string jsonPath = "country_codes";
+
+        highScore = PlayerPrefs.GetInt("HighScore", 0);
 
         var countryCodesAsset = Resources.Load(jsonPath, typeof(TextAsset)) as TextAsset;
         if (countryCodesAsset == null)
@@ -143,9 +154,14 @@ public class FlagQuizLogic : MonoBehaviour
         else
         {
             Debug.Log("Incorrect!");
-            ResetScore();
-            StartGame();
-
+            if (score > highScore)
+            {
+                highScore = score;
+                PlayerPrefs.SetInt("HighScore", highScore);
+            }
+            losePanel.SetActive(true);
+            bestScoreText.text = $"Best Score: {highScore}";
+            loseScoreText.text = $"Score: {score}";
             IntersitialAd ad = ads.GetComponent<IntersitialAd>();
             ad.Show();
         }
@@ -164,5 +180,10 @@ public class FlagQuizLogic : MonoBehaviour
         scoreText.text = $"Score: {score}";
     }
         
-
+    public void ResetGame()
+    {
+        ResetScore();
+        losePanel.SetActive(false);
+        StartGame();
+    }
 }
