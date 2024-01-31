@@ -36,11 +36,17 @@ public class FlagQuizLogic : MonoBehaviour
 
     void Start()
     {
-        string jsonPath = "Assets/Resources/country_codes.json";
+        string jsonPath = "country_codes";
 
-        if (System.IO.File.Exists(jsonPath))
+        var countryCodesAsset = Resources.Load(jsonPath, typeof(TextAsset)) as TextAsset;
+        if (countryCodesAsset == null)
         {
-            string jsonString = System.IO.File.ReadAllText(jsonPath);
+            Debug.LogError("Resources.Load() failed");
+        }
+        else
+        {
+            string jsonString = countryCodesAsset.text;
+            Debug.Log("Loaded json: " + jsonString);
 
             // Deserialize JSON string into CountryList object
             countryList = JsonUtility.FromJson<CountryList>(jsonString);
@@ -55,10 +61,6 @@ public class FlagQuizLogic : MonoBehaviour
             Debug.Log($"Length of CountryList: {countryList.countries.Count}");
 
             StartGame();
-        }
-        else
-        {
-            Debug.LogError("JSON file not found at path: " + jsonPath);
         }
     }
 
