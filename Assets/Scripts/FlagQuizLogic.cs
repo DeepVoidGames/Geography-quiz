@@ -161,7 +161,7 @@ public class FlagQuizLogic : MonoBehaviour
             }
             losePanel.SetActive(true);
             bestScoreText.text = $"Best Score: {highScore}";
-            loseScoreText.text = $"Score: {score}";
+            loseScoreText.text = $"Actual Score: {score}";
             IntersitialAd ad = ads.GetComponent<IntersitialAd>();
             ad.Show();
         }
