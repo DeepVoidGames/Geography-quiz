@@ -20,7 +20,7 @@ public class BannerAd : MonoBehaviour
     private void Start()
     {
         MobileAds.Initialize(initStatus => { Debug.Log("Mobile Ads Initialized"); });
-        RequestBanner();
+        //RequestBanner();
     }
 
     /// <summary>

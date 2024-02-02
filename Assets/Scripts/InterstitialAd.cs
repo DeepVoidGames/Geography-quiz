@@ -19,7 +19,7 @@ public class IntersitialAd : MonoBehaviour
     private void Start()
     {
         MobileAds.Initialize(initStatus => { Debug.Log("Mobile Ads Initialized"); });
-        RequestAd();
+        //RequestAd();
     }
 
     public void Show()
