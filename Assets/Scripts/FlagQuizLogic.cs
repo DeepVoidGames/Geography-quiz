@@ -1,5 +1,6 @@
 using GoogleMobileAds.Api;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -24,15 +25,16 @@ public class FlagQuizLogic : MonoBehaviour
 
     [Header("UI Elements")]
     public Image flagImage;
-    public Text scoreText;
+    public TMP_Text scoreText;
     public Button button1;
     public Button button2;
     public Button button3;
     public Button button4;
+    
     [Header("Lose Panel UI")]
     public GameObject losePanel;
-    public Text bestScoreText;
-    public Text loseScoreText;
+    public TMP_Text bestScoreText;
+    public TMP_Text loseScoreText;
 
     [Header("Stats")]
     public int score = 0;
@@ -77,7 +79,7 @@ public class FlagQuizLogic : MonoBehaviour
 
     void StartGame()
     {
-        scoreText.text = $"Score: {score}";
+        scoreText.SetText($"Score: {score}");
         // Pick a random country
         int randomIndex = Random.Range(0, countryList.countries.Count);
         Country randomCountry = countryList.countries[randomIndex];
@@ -115,10 +117,10 @@ public class FlagQuizLogic : MonoBehaviour
         button3.onClick.AddListener(() => CheckAnswer(otherCountries[2].code, randomCountry.code));
         button4.onClick.AddListener(() => CheckAnswer(otherCountries[3].code, randomCountry.code));
 
-        button1.GetComponentInChildren<Text>().text = otherCountries[0].name;
-        button2.GetComponentInChildren<Text>().text = otherCountries[1].name;
-        button3.GetComponentInChildren<Text>().text = otherCountries[2].name;
-        button4.GetComponentInChildren<Text>().text = otherCountries[3].name;
+        button1.GetComponentInChildren<TMP_Text>().SetText(otherCountries[0].name);
+        button2.GetComponentInChildren<TMP_Text>().SetText(otherCountries[1].name);
+        button3.GetComponentInChildren<TMP_Text>().SetText(otherCountries[2].name);
+        button4.GetComponentInChildren<TMP_Text>().SetText(otherCountries[3].name);
 
         // Load the flag image
         string flagPath = $"Flags/{randomCountry.code}";
@@ -160,8 +162,8 @@ public class FlagQuizLogic : MonoBehaviour
                 PlayerPrefs.SetInt("HighScore", highScore);
             }
             losePanel.SetActive(true);
-            bestScoreText.text = $"Best Score: {highScore}";
-            loseScoreText.text = $"Actual Score: {score}";
+            bestScoreText.SetText($"Best Score: {highScore}");
+            loseScoreText.SetText($"Actual Score: {score}");
             IntersitialAd ad = ads.GetComponent<IntersitialAd>();
             ad.Show();
         }
@@ -170,14 +172,14 @@ public class FlagQuizLogic : MonoBehaviour
     void AddScore()
     {
         score++;
-        scoreText.text = $"Score: {score}";
+        scoreText.SetText($"Score: {score}");
         StartGame();
     }
 
     void ResetScore()
     {
         score = 0;
-        scoreText.text = $"Score: {score}";
+        scoreText.SetText($"Score: {score}");
     }
         
     public void ResetGame()
