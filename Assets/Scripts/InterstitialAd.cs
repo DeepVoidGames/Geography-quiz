@@ -7,7 +7,7 @@ public class IntersitialAd : MonoBehaviour
 {
     // These ad units are configured to always serve test ads.
 #if UNITY_ANDROID
-  private string _adUnitId = "ca-app-pub-3940256099942544/1033173712";
+  private string _adUnitId = "ca-app-pub-9567172455942164/9190708669";
 #elif UNITY_IPHONE
   private string _adUnitId = "ca-app-pub-3940256099942544/5575463023";
 #else
@@ -19,7 +19,7 @@ public class IntersitialAd : MonoBehaviour
     private void Start()
     {
         MobileAds.Initialize(initStatus => { Debug.Log("Mobile Ads Initialized"); });
-        //RequestAd();
+        RequestAd();
     }
 
     public void Show()
