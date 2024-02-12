@@ -139,10 +139,12 @@ PlayerSettings:
   vulkanEnableLateAcquireNextImage: 0
   vulkanEnableCommandBufferRecycling: 1
   loadStoreDebugModeEnabled: 0
-  bundleVersion: 1.0.1
+  bundleVersion: 1.0.2
   preloadedAssets:
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 11400000, guid: 99690d65094d7cc448eef123197e2486, type: 2}
+  - {fileID: -7001252720022619314, guid: bdbb43f1003ed7641becfa9ad8237c2f, type: 2}
   metroInputSource: 0
   wsaTransparentSwapchain: 0
   m_HolographicPauseOnTrackingLoss: 1
@@ -176,7 +178,7 @@ PlayerSettings:
     iPhone: 0
     tvOS: 0
   overrideDefaultApplicationIdentifier: 0
-  AndroidBundleVersionCode: 7
+  AndroidBundleVersionCode: 8
   AndroidMinSdkVersion: 23
   AndroidTargetSdkVersion: 33
   AndroidPreferredInstallLocation: 1
