@@ -15,7 +15,7 @@ public class BannerAd : MonoBehaviour
 #endif
 
     BannerView _bottomBanner;
-    BannerView _topBanner;
+    //BannerView _topBanner;
 
     private void Start()
     {
@@ -38,13 +38,13 @@ public class BannerAd : MonoBehaviour
         AdRequest request = new AdRequest();
         _bottomBanner.LoadAd(request);
 
-        if (_topBanner != null)
+        /*if (_topBanner != null)
         {
             _topBanner.Destroy();
         }
         _topBanner = new BannerView(_adUnitId, AdSize.Banner, AdPosition.Top);
         request = new AdRequest();
-        _topBanner.LoadAd(request);
+        _topBanner.LoadAd(request);*/
     }
 
 }
